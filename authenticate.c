@@ -193,10 +193,12 @@ static const char *getpassf(const char *filename)
 			rsyserr(FERROR, errno, "stat(%s)", filename);
 			exit_cleanup(RERR_SYNTAX);
 		}
+/*
 		if ((st.st_mode & 06) != 0) {
 			rprintf(FERROR, "ERROR: password file must not be other-accessible\n");
 			exit_cleanup(RERR_SYNTAX);
 		}
+*/
 		if (MY_UID() == ROOT_UID && st.st_uid != ROOT_UID) {
 			rprintf(FERROR, "ERROR: password file must be owned by root when running as root\n");
 			exit_cleanup(RERR_SYNTAX);
